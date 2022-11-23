@@ -7,6 +7,7 @@ def _LOAD(path):
     k = 0
     d = 0
     c = 0
+    
 
     for line in file:
 
