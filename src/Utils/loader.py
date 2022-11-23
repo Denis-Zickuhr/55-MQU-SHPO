@@ -7,7 +7,7 @@ def _LOAD(path):
     k = 0
     d = 0
     c = 0
-    
+
 
     for line in file:
 
@@ -62,9 +62,11 @@ def _LOAD(path):
             avail = True
 
     P = [[-1 for i in range(d)] for i in range(d)]
+    alpha = 0
     for i in range(d):
         p1 = Pa[i]
-        for j in range(d):
+        alpha += 1
+        for j in range(alpha):
             p2 = Pa[j]
             # √((x2 – x1)² + (y2 – y1)²)
             Delta = numpy.sqrt(((numpy.power((p2[0] - p1[0]), 2)) + (numpy.power((p2[1] - p1[1]), 2))))
