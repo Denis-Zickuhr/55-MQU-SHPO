@@ -43,7 +43,7 @@ def _LOAD(path):
 
         if avail:
             data = line.replace("\n", "").split(" ")
-            D[int(data[0])-1] = [int(data[1])]
+            D[int(data[0])-1] = int(data[1])
 
         if line.startswith("DEMAND_SECTION"):
             avail = True
@@ -61,18 +61,16 @@ def _LOAD(path):
         if line.startswith("DEPOT_SECTION"):
             avail = True
 
-    P = [[-1 for i in range(d)] for i in range(d)]
-    alpha = 0
+    P = numpy.array([[None for i in range(d)] for i in range(d)], dtype=numpy.float32)
     for i in range(d):
         p1 = Pa[i]
-        alpha += 1
-        for j in range(alpha):
+        for j in range(d):
             p2 = Pa[j]
             # √((x2 – x1)² + (y2 – y1)²)
             Delta = numpy.sqrt(((numpy.power((p2[0] - p1[0]), 2)) + (numpy.power((p2[1] - p1[1]), 2))))
             if int(Delta) == 0:
-                P[i][j] = -1
+                P[i][j] = None
             else:
                 P[i][j] = Delta
             
-    return d, c, k, P, D, Depot
+    return k, d, c, P, D, Depot
