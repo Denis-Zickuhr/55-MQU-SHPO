@@ -54,7 +54,7 @@ def InitialSolutionGreedy():
                 Dc[xy] = 0
                 
     S = path
-    S_Value = calc(Pw, Dc, S)
+    S_Value = calc(Pw, Dc, S, c)
 
     print("Valor da Solucao", S_Value)
 
