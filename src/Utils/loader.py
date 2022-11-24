@@ -61,14 +61,14 @@ def _LOAD(path):
         if line.startswith("DEPOT_SECTION"):
             avail = True
 
-    P = numpy.array([[None for i in range(d)] for i in range(d)], dtype=numpy.float32)
+    P = numpy.array([[None for i in range(d)] for i in range(d)], dtype=numpy.float64)
     for i in range(d):
         p1 = Pa[i]
         for j in range(d):
             p2 = Pa[j]
             # √((x2 – x1)² + (y2 – y1)²)
             Delta = numpy.sqrt(((numpy.power((p2[0] - p1[0]), 2)) + (numpy.power((p2[1] - p1[1]), 2))))
-            if int(Delta) == 0:
+            if Delta == 0.0:
                 P[i][j] = None
             else:
                 P[i][j] = Delta

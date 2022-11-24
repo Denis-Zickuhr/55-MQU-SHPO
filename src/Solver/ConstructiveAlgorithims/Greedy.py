@@ -1,72 +1,63 @@
+import random
 import numpy
 import sys
 sys.path.append('./src/Utils')
+sys.path.append('./src/Solver/ValueCalculation')
 from loader import _LOAD
+from calc import calc
 
-(k, d, c, P, D, Depot) = _LOAD('.\instances\A-n32-k5.txt')
+(k, d, c, P, D, Depot) = _LOAD('./instances/A/A-n33-k5.vrp')
 
 def InitialSolutionGreedy():
 
     Pw = P.copy()
     Dc = D.copy()
-
-    S = [[0 for i in range(d)] for i in range(k)]
-
-    BetterClients = numpy.array([None for i in range(d)] for i in range(k))
-
+    START_POINT = Dc.index(min(Dc))
+    
     S_Value = 0
+    path = [[0, 0] for i in range(k)]
+
     while (Dc.count(0) != len(Dc)):
 
-        # Seleciona o cliente mais próximo para o K veiculo
-
-        xy = 0
-        path = [xy, xy]
         TOTAL_DISTANCE = 0
         TOTAL_COST = 0
         COST = 0
         MINIMAL_COST = 0
         
-        for j in range(d):
+        # Aplica F para selecionar o "melhor caminho" da ida até a volta
+        for K in range(k):
+
+            xy = path[K][len(path[K])-2]
 
             index = None
             
-            DISTANCE_DEMAND_RATIO = -sys.maxsize
+            F = sys.maxsize
 
             for i in range(d):
 
-                if(xy == None):
-                    break
-                value = Pw[i][xy]
+                mv = Pw[i][xy] 
+                f = mv/(mv + Pw[i][START_POINT])
 
-                f = Dc[i]/value
-
-                if f > DISTANCE_DEMAND_RATIO and i not in path and Dc[i] != 0 and c - (TOTAL_COST + D[xy])  >= 0:
-                    DISTANCE_DEMAND_RATIO = f
+                if f < F and i not in path and Dc[i] != 0 and c - (TOTAL_COST + D[xy])  >= 0:
+                    F = f
                     COST = D[xy]
-                    MINIMAL_COST = value
+                    MINIMAL_COST = mv
                     index = i
             
             xy = index
-            if(xy != None and not 0):
-                path.insert(1, xy)
+            if(xy != None):
+                last = path[K].pop()
+                path[K].append(xy)
+                path[K].append(last)
                 TOTAL_DISTANCE += MINIMAL_COST
                 TOTAL_COST += COST
                 Dc[xy] = 0
-        
-        S_Value += TOTAL_DISTANCE
-        print(path, "CP: ", round(TOTAL_DISTANCE, 2), "CR: ", round(TOTAL_COST, 2))  
-
-    print("Valor da Solução", S_Value)       
-
-            
-
                 
-    # numpy.set_printoptions(threshold=sys.maxsize)
-    # print(numpy.asanyarray(Pw))
+    S = path
+    S_Value = calc(Pw, Dc, S)
 
-    # se não viola restrições adiciona
+    print("Valor da Solucao", S_Value)
 
-    return S
+    return S_Value, S
 
 InitialSolutionGreedy()
-# print(InitialSolutionGreedy())
