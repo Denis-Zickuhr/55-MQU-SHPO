@@ -4,12 +4,14 @@ def calc(P, D, S, C):
 
     STATUS = "VALID" 
 
+    print(len(S))
+
     for i in range(len(S)):
         c = 0
         for j in range(len(S[i])-1):
             pairs.append([S[i][j], S[i][j+1]])
             c += D[S[i][j]]
-        if C - c <= 0:
+        if C - c < 0:
             STATUS = "INVALID" 
 
     S_Value = 0
