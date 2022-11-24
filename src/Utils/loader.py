@@ -7,6 +7,7 @@ def _LOAD(path):
     k = 0
     d = 0
     c = 0
+    opt = 0
 
 
     for line in file:
@@ -15,6 +16,11 @@ def _LOAD(path):
             data = line.split("-")
             k = int(data[len(data)-1].replace("k", ""))
             d = int(data[len(data)-2].replace("n", ""))
+
+        if line.startswith("COMM"):
+            data = line.replace(")", "").replace("\n", "").split(" ")
+            data.reverse()
+            opt = data[0]
 
         if line.startswith("CAPACITY :"):
             c = int(line.replace("CAPACITY :", "").replace("\n", ""))
@@ -61,16 +67,16 @@ def _LOAD(path):
         if line.startswith("DEPOT_SECTION"):
             avail = True
 
-    P = numpy.array([[None for i in range(d)] for i in range(d)], dtype=numpy.float32)
+    P = numpy.array([[None for i in range(d)] for i in range(d)], dtype=numpy.float64)
     for i in range(d):
         p1 = Pa[i]
         for j in range(d):
             p2 = Pa[j]
             # √((x2 – x1)² + (y2 – y1)²)
             Delta = numpy.sqrt(((numpy.power((p2[0] - p1[0]), 2)) + (numpy.power((p2[1] - p1[1]), 2))))
-            if int(Delta) == 0:
+            if Delta == 0.0:
                 P[i][j] = None
             else:
                 P[i][j] = Delta
             
-    return k, d, c, P, D, Depot
+    return k, d, c, P, D, Depot, opt
