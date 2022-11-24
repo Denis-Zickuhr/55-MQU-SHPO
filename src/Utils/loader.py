@@ -7,6 +7,7 @@ def _LOAD(path):
     k = 0
     d = 0
     c = 0
+    opt = 0
 
 
     for line in file:
@@ -15,6 +16,11 @@ def _LOAD(path):
             data = line.split("-")
             k = int(data[len(data)-1].replace("k", ""))
             d = int(data[len(data)-2].replace("n", ""))
+
+        if line.startswith("COMM"):
+            data = line.replace(")", "").replace("\n", "").split(" ")
+            data.reverse()
+            opt = data[0]
 
         if line.startswith("CAPACITY :"):
             c = int(line.replace("CAPACITY :", "").replace("\n", ""))
@@ -73,4 +79,4 @@ def _LOAD(path):
             else:
                 P[i][j] = Delta
             
-    return k, d, c, P, D, Depot
+    return k, d, c, P, D, Depot, opt

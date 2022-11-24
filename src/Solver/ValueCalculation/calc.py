@@ -1,10 +1,13 @@
-def calc(P, D, S, C):
+def calc(P, D, S, C, Dc):
+
     
+
     pairs = []
 
-    STATUS = "VALID" 
+    STATUS = "VALID"
 
-    print(len(S))
+    if Dc.count(0) != len(Dc):
+        STATUS = "INVALID"
 
     for i in range(len(S)):
         c = 0
@@ -12,14 +15,11 @@ def calc(P, D, S, C):
             pairs.append([S[i][j], S[i][j+1]])
             c += D[S[i][j]]
         if C - c < 0:
-            STATUS = "INVALID" 
+            STATUS = "INVALID"
 
     S_Value = 0
 
     for x in pairs:
         S_Value += round(P[x[0]][x[1]], 0)
 
-    for y in P:
-        S_Value += round(P[x[0]][x[1]], 0)
-
-    return round(S_Value, 0), STATUS 
+    return round(S_Value, 0), STATUS
