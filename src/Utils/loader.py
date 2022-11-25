@@ -68,6 +68,7 @@ def _LOAD(path):
             avail = True
 
     P = numpy.array([[None for i in range(d)] for i in range(d)], dtype=numpy.float64)
+    FarthestPoint = 0
     for i in range(d):
         p1 = Pa[i]
         for j in range(d):
@@ -78,5 +79,7 @@ def _LOAD(path):
                 P[i][j] = None
             else:
                 P[i][j] = Delta
+            if Delta > FarthestPoint:
+                FarthestPoint = Delta
             
-    return k, d, c, P, D, Depot, opt
+    return k, d, c, P, D, Depot, opt, FarthestPoint

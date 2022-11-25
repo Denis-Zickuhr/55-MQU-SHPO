@@ -8,11 +8,10 @@ from calc import calc
 
 def InitialSolutionGreedy(ins):
 
-    (k, d, c, P, D, Depot, opt) = _LOAD(ins)
+    (k, d, c, P, D, Depot, opt, FarthestPoint) = _LOAD(ins)
 
     Pw = P.copy()
     Dc = D.copy()
-    START_POINT = Dc.index(min(Dc))
     
     S_Value = 0
     path = [[0, 0] for i in range(k)]
@@ -36,8 +35,7 @@ def InitialSolutionGreedy(ins):
             for i in range(d):
 
                 mv = Pw[i][xy] 
-                pv = Pw[i][START_POINT]
-                f = (mv + pv) / 2
+                f = mv
 
                 if f < F and i not in path and Dc[i] != 0 and c - (TOTAL_COST + D[i])  >= 0:
                     F = f
@@ -47,37 +45,35 @@ def InitialSolutionGreedy(ins):
             
             xy = index
             if(xy != None):
-                last = path[K].pop()
-                path[K].append(xy)
-                path[K].append(last)
+                path[K].insert(len(path[K])-1, xy)
                 TOTAL_DISTANCE += MINIMAL_COST
                 TOTAL_COST += COST
                 Dc[xy] = 0
                 
     S = path
-    S_Value = calc(Pw, Dc, S, c, Dc)
+    S_Value, STAUTS , pairs = calc(Pw, Dc, S, c, Dc)
 
-    return S_Value, S, opt
+    return S_Value, S, opt, pairs, STAUTS
 
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n80-k10.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n63-k9.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n65-k9.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n46-k7.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n55-k9.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n48-k7.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n37-k5.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n37-k6.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n80-k10.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n39-k5.vrp')
-print(("Optimal:", opt, S_Value))
-(S_Value, S, opt) = InitialSolutionGreedy('./instances/A/A-n69-k9.vrp')
-print(("Optimal:", opt, S_Value))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n80-k10.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n63-k9.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n65-k9.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n46-k7.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n55-k9.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n48-k7.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n37-k5.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n37-k6.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n80-k10.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n39-k5.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
+(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n69-k9.vrp')
+print((f"Optimal: {opt}", S_Value, STATUS))
