@@ -1,6 +1,5 @@
+import numpy
 def calc(P, D, S, C, Dc):
-
-    
 
     pairs = []
 
@@ -20,6 +19,8 @@ def calc(P, D, S, C, Dc):
     S_Value = 0
 
     for x in pairs:
-        S_Value += round(P[x[0]][x[1]], 0)
-
-    return round(S_Value, 0), STATUS
+        if x != 0:
+            n = round(P[x[0]][x[1]], 0)
+            S_Value += n if not numpy.isnan(n) else 0
+        
+    return round(S_Value, 0), STATUS, pairs
