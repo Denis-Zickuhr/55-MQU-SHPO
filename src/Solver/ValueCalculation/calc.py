@@ -13,6 +13,8 @@ def calc(P, D, S, C, Dc):
         for j in range(len(S[i])-1):
             pairs.append([S[i][j], S[i][j+1]])
             c += D[S[i][j]]
+            # print(f"{i},{j},: {D[S[i][j]]}")
+        # print(c)
         if C - c < 0:
             STATUS = "INVALID"
 

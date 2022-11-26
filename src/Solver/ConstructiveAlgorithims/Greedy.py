@@ -15,43 +15,34 @@ def InitialSolutionGreedy(ins):
     
     S_Value = 0
     path = [[0, 0] for i in range(k)]
-
+    TOTAL_COST = [0 for i in range(k)]
+    Alpha = []
+    
     while (Dc.count(0) != len(Dc)):
 
-        TOTAL_DISTANCE = 0
-        TOTAL_COST = 0
-        COST = 0
-        MINIMAL_COST = 0
-        
         # Aplica F para selecionar o "melhor caminho" da ida até a volta
         for K in range(k):
 
             xy = path[K][len(path[K])-2]
-
-            index = None
-            
-            F = sys.maxsize
+            Alpha.clear()
 
             for i in range(d):
 
-                mv = Pw[i][xy] 
-                f = mv
+                mv = Pw[i][xy]
+                if not numpy.isnan(mv):
+                    f = ((mv) * (1/(D[i]+0.001)))
 
-                if f < F and i not in path and Dc[i] != 0 and c - (TOTAL_COST + D[i])  >= 0:
-                    F = f
-                    COST = D[i]
-                    MINIMAL_COST = mv
-                    index = i
+                    if i not in path and Dc[i] != 0 and c - (TOTAL_COST[K] + D[i])  >= 0:
+                        Alpha.append([f, i])
             
-            xy = index
+            xy = min(Alpha)[1] if len(Alpha) > 0 else None
             if(xy != None):
                 path[K].insert(len(path[K])-1, xy)
-                TOTAL_DISTANCE += MINIMAL_COST
-                TOTAL_COST += COST
+                TOTAL_COST[K] += D[xy]
                 Dc[xy] = 0
                 
     S = path
-    S_Value, STAUTS , pairs = calc(Pw, Dc, S, c, Dc)
+    S_Value, STAUTS , pairs = calc(Pw, D, S, c, Dc)
 
     return S_Value, S, opt, pairs, STAUTS
 
