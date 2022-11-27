@@ -1,28 +1,29 @@
 import numpy
-def calc(P, D, S, C, Dc):
+def calc(Points, Demands, Solution, Capacity, MetDemand):
 
-    pairs = []
+    pairs = [[] for i in range(len(Solution))]
 
     STATUS = "VALID"
 
-    if Dc.count(0) != len(Dc):
-        STATUS = "INVALID"
+    if MetDemand.count(0) != len(MetDemand):
+        STATUS = "INVALID - unmet demand"
 
-    for i in range(len(S)):
+    for i in range(len(Solution)):
         c = 0
-        for j in range(len(S[i])-1):
-            pairs.append([S[i][j], S[i][j+1]])
-            c += D[S[i][j]]
-            # print(f"{i},{j},: {D[S[i][j]]}")
-        # print(c)
-        if C - c < 0:
+        for j in range(len(Solution[i])-1):
+            pairs[i].append([Solution[i][j], Solution[i][j+1]])
+            c += Demands[Solution[i][j]]
+        if Capacity - c < 0 and len(STATUS) < 7:
             STATUS = "INVALID"
+        if Capacity - c < 0:
+            STATUS += f", Vehicle {i}: {c}"
 
     S_Value = 0
 
-    for x in pairs:
-        if x != 0:
-            n = round(P[x[0]][x[1]], 0)
-            S_Value += n if not numpy.isnan(n) else 0
+    for pair in pairs:
+        for x in pair:
+            if x != 0:
+                n = round(Points[x[0]][x[1]], 0)
+                S_Value += n if not numpy.isnan(n) else 0
         
-    return round(S_Value, 0), STATUS, pairs
+    return round(S_Value, 0), STATUS, pairs, Points

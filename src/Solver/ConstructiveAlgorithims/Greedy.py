@@ -42,29 +42,6 @@ def InitialSolutionGreedy(ins):
                 Dc[xy] = 0
                 
     S = path
-    S_Value, STAUTS , pairs = calc(Pw, D, S, c, Dc)
+    S_Value, STAUTS , pairs, Points = calc(Pw, D, S, c, Dc)
 
-    return S_Value, S, opt, pairs, STAUTS
-
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n80-k10.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n63-k9.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n65-k9.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n46-k7.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n55-k9.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n48-k7.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n37-k5.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n37-k6.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n80-k10.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n39-k5.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
-(S_Value, S, opt, pairs, STATUS) = InitialSolutionGreedy('./instances/A/A-n69-k9.vrp')
-print((f"Optimal: {opt}", S_Value, STATUS))
+    return S_Value, S, opt, pairs, STAUTS, Points
