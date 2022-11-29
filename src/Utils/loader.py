@@ -82,4 +82,5 @@ def _LOAD(path):
             if Delta > FarthestPoint:
                 FarthestPoint = Delta
             
-    return k, d, c, P, D, Depot, opt, FarthestPoint
+    return k, d, c, P, D 
+    # ,Depot, opt, FarthestPoint

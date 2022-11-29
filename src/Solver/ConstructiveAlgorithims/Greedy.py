@@ -1,47 +1,30 @@
-import random
 import numpy
-import sys
-sys.path.append('./src/Utils')
-sys.path.append('./src/Solver/ValueCalculation')
-from loader import _LOAD
-from calc import calc
 
-def InitialSolutionGreedy(ins):
+def InitialSolutionGreedy(load):
 
-    (k, d, c, P, D, Depot, opt, FarthestPoint) = _LOAD(ins)
+    (vehicles, clients, vehicle_capacity, distances, client_demand) = load
 
-    Pw = P.copy()
-    Dc = D.copy()
+    distances_copy = distances.copy()
+    client_supply = client_demand.copy()
+    solution = [[0, 0] for i in range(vehicles)]
+    vehicles_demand = [0 for i in range(vehicles)]
     
-    S_Value = 0
-    path = [[0, 0] for i in range(k)]
-    TOTAL_COST = [0 for i in range(k)]
-    Alpha = []
-    
-    while (Dc.count(0) != len(Dc)):
+    while (client_supply.count(0) != len(client_supply)):
+        for vehicle_k in range(vehicles):
+            current_client = solution[vehicle_k][-2]
+            valid_clients = []
 
-        # Aplica F para selecionar o "melhor caminho" da ida até a volta
-        for K in range(k):
-
-            xy = path[K][len(path[K])-2]
-            Alpha.clear()
-
-            for i in range(d):
-
-                mv = Pw[i][xy]
-                if not numpy.isnan(mv):
-                    f = ((mv) * (1/(D[i]+0.001)))
-
-                    if i not in path and Dc[i] != 0 and c - (TOTAL_COST[K] + D[i])  >= 0:
-                        Alpha.append([f, i])
+            for client_i in range(clients):
+                distance_client_i_current = distances_copy[client_i][current_client]
+                if not numpy.isnan(distance_client_i_current):
+                    function_val = (distance_client_i_current * (1/(client_demand[client_i]+0.001)))
+                    if client_i not in solution and client_supply[client_i] != 0 and vehicle_capacity - (vehicles_demand[vehicle_k] + client_demand[client_i])  >= 0:
+                        valid_clients.append([function_val, client_i])
             
-            xy = min(Alpha)[1] if len(Alpha) > 0 else None
-            if(xy != None):
-                path[K].insert(len(path[K])-1, xy)
-                TOTAL_COST[K] += D[xy]
-                Dc[xy] = 0
-                
-    S = path
-    S_Value, STAUTS , pairs, Points = calc(Pw, D, S, c, Dc)
+            current_client = min(valid_clients)[1] if len(valid_clients) > 0 else None
+            if(current_client != None):
+                solution[vehicle_k].insert(len(solution[vehicle_k])-1, current_client)
+                vehicles_demand[vehicle_k] += client_demand[current_client]
+                client_supply[current_client] = 0
 
-    return S_Value, S, opt, pairs, STAUTS, Points
+    return solution

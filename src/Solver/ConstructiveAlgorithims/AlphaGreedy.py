@@ -1,80 +1,34 @@
 import random
 import numpy
-import sys
-sys.path.append('./src/Utils')
-sys.path.append('./src/Solver/ValueCalculation')
-from loader import _LOAD
-from calc import calc
 
-def AlphaGreedy(ALPHA, ins):
+def AlphaGreedy(ALPHA, load):
 
-    (k, d, c, P, D, Depot, opt, FarthestPoint) = _LOAD(ins)
+    (vehicles, clients, vehicle_capacity, distances, client_demand) = load
+    distances_copy = distances.copy()
+    client_supply = client_demand.copy() 
+    solution = [[0, 0] for i in range(vehicles)]
+    vehicles_demand = [0 for i in range(vehicles)]
 
-    Pw = P.copy()
-    Dc = D.copy()
-    
-    S_Value = 0
-    path = [[0, 0] for i in range(k)]
-    TOTAL_COST = [0 for i in range(k)]
-    Alpha = []
+    while (client_supply.count(0) != len(client_supply)):
+        if client_supply.count(0) != 1 and len(valid_clients) == 0:
+            return AlphaGreedy(ALPHA, load)
 
-    while (Dc.count(0) != len(Dc)):
-        if Dc.count(0) != 1 and len(Alpha) == 0:
-            return AlphaGreedy(ALPHA, ins)
+        for K in range(vehicles):
+            current_client = solution[K][-2]
+            valid_clients = []
+            for i in range(clients):
+                distance_client_i_current = distances_copy[i][current_client]
+                if not numpy.isnan(distance_client_i_current):
+                    function_val = (distance_client_i_current * (1/(client_demand[i]+0.001)))
+                    if i not in solution and client_supply[i] != 0 and vehicle_capacity - (vehicles_demand[K] + client_demand[i])  >= 0:
+                        valid_clients.append([function_val, i])
+
+            valid_clients.sort()
+            r = random.randint(-1, int((len(valid_clients)-1)*ALPHA))
+            current_client = valid_clients[r][1] if len(valid_clients) > 0 else None
+            if(current_client != None):
+                solution[K].insert(len(solution[K])-1, current_client)
+                vehicles_demand[K] += client_demand[current_client]
+                client_supply[current_client] = 0
                 
-        # Aplica F para selecionar o "melhor caminho" da ida até a volta
-        for K in range(k):
-
-            xy = path[K][len(path[K])-2]
-            Alpha.clear()
-
-            for i in range(d):
-
-                mv = Pw[i][xy]
-                if not numpy.isnan(mv):
-                    f = ((mv) * (1/(D[i]+0.001)))
-
-                    if i not in path and Dc[i] != 0 and c - (TOTAL_COST[K] + D[i])  >= 0:
-                        Alpha.append([f, i])
-
-            Alpha.sort()
-            r = random.randint(-1, int((len(Alpha)-1)*ALPHA))
-            xy = Alpha[r][1] if len(Alpha) > 0 else None
-            if(xy != None):
-                path[K].insert(len(path[K])-1, xy)
-                TOTAL_COST[K] += D[xy]
-                Dc[xy] = 0
-                
-    S = path
-    S_Value, STATUS, pairs, Points = calc(Pw, D, S, c, Dc)
-
-    return S_Value, S, opt, pairs, STATUS, Points
-
-for i in range(99):
-    SUM = 0
-    for j in range(10):
-        a = eval(f"0.0{i+1}") if i+1 < 10 else eval(f"0.{i+1}")
-        (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n80-k10.vrp')
-        SUM += S_Value
-    print(f"{a}: {SUM/10}")
-    
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n63-k9.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n65-k9.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n46-k7.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n55-k9.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n48-k7.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n37-k5.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n37-k6.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n80-k10.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n39-k5.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
-# (S_Value, S, opt, pairs, STATUS, Points)  = AlphaGreedy( a , './instances/A/A-n69-k9.vrp')
-# print((f"Optimal: {opt}", S_Value, STATUS))
+    return solution
