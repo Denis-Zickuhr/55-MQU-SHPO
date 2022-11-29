@@ -2,7 +2,8 @@
     "python.analysis.extraPaths": [
         "./src/Utils",
         "./src/Solver/ValueCalculation",
-        "./src/Solver/ConstructiveAlgorithims"
+        "./src/Solver/ConstructiveAlgorithims",
+        "./src/Solver/LocalSearch"
     ]
     
 }
