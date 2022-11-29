@@ -1,6 +1,6 @@
 import numpy
 
-def InitialSolutionGreedy(load):
+def solve(load):
 
     (vehicles, clients, vehicle_capacity, distances, client_demand) = load
 

@@ -24,4 +24,4 @@ def calcweigth(Solution, Demands, C):
         if C - c < 0:
             Valid = False
     
-    return loads, C, Valid
+    return loads, C
