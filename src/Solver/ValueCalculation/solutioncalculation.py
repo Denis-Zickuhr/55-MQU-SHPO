@@ -23,5 +23,6 @@ def calcweigth(Solution, Demands, C):
         loads[i] = c
         if C - c < 0:
             Valid = False
+            print("!! INVALID !!")
     
     return loads, C
