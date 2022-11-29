@@ -1,0 +1,1 @@
+python src\Solver\GRASP\SWAP+AGMDMD.py instances/A/A-n37-k5.vrp 10 2 
