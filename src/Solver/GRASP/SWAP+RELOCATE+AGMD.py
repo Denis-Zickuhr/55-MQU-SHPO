@@ -25,7 +25,6 @@ def GRASP(solution, distances, visited_solutions, relax_value):
     best_solution = solution
     solutions = relocate(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
     solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
-
     for solution_n in solutions:
         new_soltion_value = calcdistance(solution_n, distances)
 

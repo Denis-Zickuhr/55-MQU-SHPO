@@ -1,1 +1,1 @@
-python src\Solver\GRASP\SWAP+RELOCATE+AGMDMD.py instances/A/A-n37-k5.vrp 60 20 
+python src\Solver\GRASP\SWAP+RELOCATE+AGMD.py instances/A/A-n37-k5.vrp 10 1
