@@ -1,0 +1,1 @@
+python src\Solver\GRASP\STAR+AGMD.py instances/A/A-n37-k5.vrp 60 20

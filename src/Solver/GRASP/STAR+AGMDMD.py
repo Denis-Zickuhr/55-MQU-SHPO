@@ -7,9 +7,8 @@ sys.path.append('./src/Solver/LocalSearch')
 from loader import _LOAD
 from solutioncalculation import calcdistance
 from solutioncalculation import calcweigth
-from AlphaGreedyMaxD import solve
-from operators import relocate
-from operators import swap
+from AlphaGreedyMinDMaxD import solve
+from operators import *
 
 ins = sys.argv[1]
 solution  = solve(0.2, _LOAD(ins))
@@ -25,6 +24,7 @@ def GRASP(solution, distances, visited_solutions, relax_value):
     best_solution = solution
     solutions = relocate(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
     solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
+    solutions.extend(route_robbing(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
     for solution_n in solutions:
         new_soltion_value = calcdistance(solution_n, distances)
 
