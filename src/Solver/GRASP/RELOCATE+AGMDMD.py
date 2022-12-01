@@ -1,15 +1,11 @@
 import sys
 import time
-sys.path.append('./src/Solver/ValueCalculation')
-sys.path.append("./src/Solver/ConstructiveAlgorithims")
-sys.path.append('./src/Utils')
-sys.path.append('./src/Solver/LocalSearch')
+import json
+sys.path.extend(json.load(open('.vscode/settings.json'))['python.analysis.extraPaths'])
 from loader import _LOAD
-from solutioncalculation import calcdistance
-from solutioncalculation import calcweigth
+from solutioncalculation import calcdistance, calcweigth
 from AlphaGreedyMinDMaxD import solve
 from operators import relocate
-from operators import swap
 
 ins = sys.argv[1]
 solution  = solve(0.2, _LOAD(ins))

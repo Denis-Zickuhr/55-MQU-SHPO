@@ -43,30 +43,3 @@ def swap(solution, client_demand, calc_function):
                                 solutions.append(copy.deepcopy(new_solution))
                                 new_solution.clear()
     return solutions
-
-def route_robbing(solution, item_value, calc_function):
-    vehicle_loads, vehicle_capacity = calc_function
-    solutions = []
-    vehicles = len(solution)
-    for target_vehicle in range(vehicles):
-        for robber_vehicle in range(vehicles):
-            target = solution[target_vehicle].copy()
-            new_solution = copy.deepcopy(solution)
-            thief_loads = vehicle_loads.copy()
-            robber = solution[robber_vehicle].copy()
-            if robber_vehicle != target_vehicle:
-                stolen_valuables = 0
-                for valuable in range(len(target)):
-                    target_item = target[valuable-stolen_valuables]
-                    if target_item != 0:
-                        if vehicle_capacity - (thief_loads[robber_vehicle] + item_value[target_item]) >= 0:
-                            stolen_valuables += 1
-                            target.remove(target_item)
-                            robber.insert(-1, target_item)
-                            new_solution[target_vehicle] = target.copy()
-                            new_solution[robber_vehicle] = robber.copy()
-                            thief_loads[robber_vehicle] += item_value[target_item]
-                            thief_loads[target_vehicle] -= item_value[target_item]
-                    solutions.append(copy.deepcopy(new_solution))
-
-    return solutions

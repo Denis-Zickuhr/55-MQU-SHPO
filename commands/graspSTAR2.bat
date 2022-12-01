@@ -1,1 +1,1 @@
-python src\Solver\GRASP\STAR+AGMDMD.py instances/A/A-n37-k5.vrp 10 1
+python src\Solver\GRASP\STAR+AGMDMD.py instances/A/A-n55-k9.vrp 30 1

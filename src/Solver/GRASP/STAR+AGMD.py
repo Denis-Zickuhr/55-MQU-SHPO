@@ -1,12 +1,9 @@
 import sys
 import time
-sys.path.append('./src/Solver/ValueCalculation')
-sys.path.append("./src/Solver/ConstructiveAlgorithims")
-sys.path.append('./src/Utils')
-sys.path.append('./src/Solver/LocalSearch')
+import json
+sys.path.extend(json.load(open('.vscode/settings.json'))['python.analysis.extraPaths'])
 from loader import _LOAD
-from solutioncalculation import calcdistance
-from solutioncalculation import calcweigth
+from solutioncalculation import calcdistance, calcweigth
 from AlphaGreedyMaxD import solve
 from operators import *
 
@@ -24,7 +21,6 @@ def GRASP(solution, distances, visited_solutions, relax_value):
     best_solution = solution
     solutions = relocate(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
     solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
-    solutions.extend(route_robbing(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
     for solution_n in solutions:
         new_soltion_value = calcdistance(solution_n, distances)
 
