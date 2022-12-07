@@ -1,1 +1,1 @@
-python "src\Solver\GRASP\TabooSearch+MD1.py" instances/A/A-n55-k9.vrp 20 1 0.07 5
+pypy "src\Solver\GRASP\TabooSearch+MD1.py" instances/A/A-n55-k9.vrp 20 1 0.07 5

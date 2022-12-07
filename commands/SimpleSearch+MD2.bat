@@ -1,1 +1,1 @@
-python "src\Solver\GRASP\SimpleSearch+MD2.py" instances/A/A-n55-k9.vrp 20 1 0.07 5
+pypy "src\Solver\GRASP\SimpleSearch+MD2.py" instances/A/A-n55-k9.vrp 20 1 0.07 5

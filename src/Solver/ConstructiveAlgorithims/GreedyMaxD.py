@@ -1,5 +1,4 @@
 import sys
-import numpy
 
 def solve(load):
 
@@ -17,7 +16,7 @@ def solve(load):
 
             for client_i in range(clients):
                 distance_client_i_current = distances_copy[client_i][current_client]
-                if not numpy.isnan(distance_client_i_current):
+                if not distance_client_i_current is None:
                     function_val = -sys.maxsize - client_supply[client_i] 
                     if client_i not in solution and client_supply[client_i] != 0 and vehicle_capacity - (vehicles_demand[vehicle_k] + client_demand[client_i])  >= 0:
                         valid_clients.append([function_val, client_i])

@@ -17,7 +17,6 @@ def relocate(solution, client_demand, calc_function):
                             new_solution[vehicles_destiny+1].insert(position+1, client_a)
                             solutions.append(copy.deepcopy(new_solution))
                             new_solution.clear()
-
     return solutions
 
 def swap(solution, client_demand, calc_function):
@@ -67,6 +66,5 @@ def route_robbing(solution, item_value, calc_function):
                             new_solution[robber_vehicle] = robber.copy()
                             thief_loads[robber_vehicle] += item_value[target_item]
                             thief_loads[target_vehicle] -= item_value[target_item]
-            solutions.append(new_solution)
-            
+                            solutions.append(copy.deepcopy(new_solution))       
     return solutions
