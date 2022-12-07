@@ -3,7 +3,8 @@
         "./src/Utils",
         "./src/Solver/ValueCalculation",
         "./src/Solver/ConstructiveAlgorithims",
-        "./src/Solver/LocalSearch"
+        "./src/Solver/LocalSearch",
+        "./src/Solver/Operators",
+        "./src/Solver/GRASP"
     ]
-    
 }
