@@ -7,7 +7,7 @@ from loader import _LOAD
 from solutioncalculation import *
 from operators import *
 
-def localSearch(ins, ts, tx, initial_construction):
+def localSearch(ins, initial_construction):
         
     ins = ins
     solution  = initial_construction
@@ -21,8 +21,11 @@ def localSearch(ins, ts, tx, initial_construction):
         best_solution = solution
         not_improved = True
         
-        solutions = swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
+        solutions = []
+        solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
         solutions.extend(route_robbing(best_solution, client_demand, calcweigth(best_solution, client_demand, vehicle_capacity)))
+        solutions.extend(relocate(best_solution, client_demand, calcweigth(best_solution, client_demand, vehicle_capacity)))
+        solutions.extend(shuffle(solution))
         
         solution_pool = []
 
@@ -62,8 +65,7 @@ def localSearch(ins, ts, tx, initial_construction):
         def startSearch():
             best_solution = solution
             best_solution_value = fit_value
-            t_end = time.time() + (ts * tx)
-            while time.time() < t_end:
+            while True:
                 best_solution, best_solution_value, not_improved = search(best_solution, best_solution_value, distances)
                 if not_improved:
                     break

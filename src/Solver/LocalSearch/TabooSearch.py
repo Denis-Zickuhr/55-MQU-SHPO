@@ -1,3 +1,4 @@
+import random
 import sys
 import time
 import json
@@ -21,8 +22,10 @@ def localSearch(ins, ts, tx, initial_construction):
         best_solution = solution
         not_improved = True
         
-        solutions = swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
+        solutions = relocate(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
+        solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
         solutions.extend(route_robbing(best_solution, client_demand, calcweigth(best_solution, client_demand, vehicle_capacity)))
+        solutions.extend(shuffle(solution))
         
         for solution_n in solutions:
 
@@ -69,4 +72,3 @@ def localSearch(ins, ts, tx, initial_construction):
         return startSearch()
 
     return init()
-    

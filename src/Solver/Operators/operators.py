@@ -1,4 +1,6 @@
 import copy
+import random
+import itertools
 
 def relocate(solution, client_demand, calc_function):
     vehicle_loads, vehicle_capacity = calc_function
@@ -67,4 +69,20 @@ def route_robbing(solution, item_value, calc_function):
                             thief_loads[robber_vehicle] += item_value[target_item]
                             thief_loads[target_vehicle] -= item_value[target_item]
                             solutions.append(copy.deepcopy(new_solution))       
+    return solutions
+
+def shuffle(solution):
+    solutions = []
+    vehicles = len(solution)
+    for target_vehicle in range(vehicles):
+        for i in range(len(solution[target_vehicle])):
+            new_solution = copy.deepcopy(solution)
+            part = len(new_solution[target_vehicle])-1
+            new_solution[target_vehicle] = new_solution[target_vehicle][1:part]
+            random.shuffle(new_solution[target_vehicle])
+            new_solution[target_vehicle].insert(0,0)
+            new_solution[target_vehicle].insert(len(new_solution[target_vehicle]),0)
+            if new_solution not in solutions:
+                solutions.append(copy.deepcopy(new_solution))
+
     return solutions

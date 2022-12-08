@@ -1,5 +1,3 @@
-import numpy as np
-
 def calcdistance_nominal(Solution, Points):
 
     S_Value = 0
@@ -12,6 +10,21 @@ def calcdistance_nominal(Solution, Points):
                     S_Value += n if not n is None else 0
         
     return round(S_Value, 0)
+
+def calcdistance_partial(Solution, Points):
+
+    S_Value = 0
+
+    for i in range(len(Solution)):
+        n = Points[Solution[i]][Solution[i+1]]
+        if n is not None:
+            n = round(n, 0)
+        S_Value += n if not n is None else 0
+        
+    return round(S_Value, 0)
+
+def calcdistance_pair(Solution, Points):    
+    return round(Points[Solution[0]][Solution[1]], 0)
 
 def calcweigth(Solution, Demands, C):
 

@@ -1,12 +1,7 @@
-Com K veículos, devemos atender a demanda D de cada cliente P: 
- 
- Minimizando a distância percorida na solução
+The vehicle routing problem (VRP) is a combinatorial optimization and integer programming problem which asks:
+"What is the optimal set of routes for a fleet of vehicles to traverse in order to deliver to a given set of customers?"
 
- Sujeito a:
+Interpreter used for running scripts: pypy
 
- Para todo cliente, a soma dos 0..K veículos deve ser igual a 1;
- Para todo veículo k, a soma do custo de estoque dos clientes atendidos - sua capacidade deve ser >= 0
- Para todo veiculo k, o etinerario ij - o etinerario ji = 0 (Ciclo euclidiano)
-
-Dependências: PyPy
-
+    pypy download: https://www.pypy.org/download.html
+    pypy installation guide: https://doc.pypy.org/en/latest/install.html
