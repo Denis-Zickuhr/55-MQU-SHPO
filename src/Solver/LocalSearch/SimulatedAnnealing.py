@@ -7,19 +7,18 @@ from loader import _LOAD
 from solutioncalculation import *
 from operators import *
 
-def localSearch(ins, initial_construction):
+def localSearch(ins, initial_construction, T):
         
     ins = ins
     solution  = initial_construction
     (vehicles, clients, vehicle_capacity, distances, client_demand) = _LOAD(ins)
 
-    def search(solution, best_solution_value, distances):
+    def search(solution, best_solution_value, distances, T):
 
         global fit
         global fit_value
 
         best_solution = solution
-        not_improved = True
 
         weigth = calcweigth(solution, client_demand, vehicle_capacity)
         
@@ -28,35 +27,32 @@ def localSearch(ins, initial_construction):
         solutions.extend(route_robbing(best_solution, client_demand, weigth))
         solutions.extend(relocate(best_solution, client_demand, weigth))
         solutions.extend(shuffle(solution))
-        
-        solution_pool = []
 
         for solution_n in solutions:
 
             new_solution_value = calcdistance_nominal(solution_n, distances)
 
             if best_solution_value > new_solution_value:
-                solution_pool.append([new_solution_value, solution_n])
-                not_improved = False
-
-        pool_size = len(solution_pool)
-        solution_pool.sort()
-        if pool_size > 0:
-            rand = random.randint(0, pool_size-1)
-            rand_elite = rand - random.randint(0, rand)
-            best_solution = solution_pool[rand_elite][1]
-            best_solution_value = calcdistance_nominal(best_solution, distances)
+                best_solution = solution_n
+                best_solution_value = new_solution_value
+                break
+            else:
+                r = random.uniform(0, 1)
+                if r < ((best_solution_value - new_solution_value)/T):
+                    best_solution = solution_n
+                    best_solution_value = new_solution_value
+                    break
+        
+        T -= (fit_value/best_solution_value) * 0.5
 
         if fit_value > best_solution_value:
             fit_value = best_solution_value
             fit = best_solution
 
-        if not_improved:
-            return best_solution, best_solution_value, not_improved
 
-        return best_solution, best_solution_value, not_improved
+        return best_solution, best_solution_value, T
 
-    def init():
+    def init(T):
 
         global fit
         global fit_value
@@ -64,15 +60,13 @@ def localSearch(ins, initial_construction):
         fit = solution
         fit_value = calcdistance_nominal(solution, distances)
 
-        def startSearch():
+        def startSearch(T):
             best_solution = solution
             best_solution_value = fit_value
-            while True:
-                best_solution, best_solution_value, not_improved = search(best_solution, best_solution_value, distances)
-                if not_improved:
-                    break
+            while T > 0:
+                best_solution, best_solution_value, T = search(best_solution, best_solution_value, distances, T)
             return best_solution, best_solution_value
-        return startSearch()
+        return startSearch(T)
 
-    return init()
+    return init(T)
     

@@ -21,10 +21,13 @@ def localSearch(ins, ts, tx, initial_construction):
 
         best_solution = solution
         not_improved = True
+
+        weigth = calcweigth(solution, client_demand, vehicle_capacity)
         
-        solutions = relocate(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
-        solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
-        solutions.extend(route_robbing(best_solution, client_demand, calcweigth(best_solution, client_demand, vehicle_capacity)))
+        solutions = []
+        solutions.extend(relocate(solution, client_demand, weigth))
+        solutions.extend(swap(solution, client_demand, weigth))
+        solutions.extend(route_robbing(best_solution, client_demand, weigth))
         solutions.extend(shuffle(solution))
         
         for solution_n in solutions:
