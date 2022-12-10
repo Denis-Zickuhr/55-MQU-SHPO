@@ -7,7 +7,7 @@ from loader import _LOAD
 from solutioncalculation import *
 from operators import *
 
-def localSearch(ins, initial_construction):
+def localSearch(ins, initial_construction, limit_seconds):
         
     ins = ins
     solution  = initial_construction
@@ -67,7 +67,8 @@ def localSearch(ins, initial_construction):
         def startSearch():
             best_solution = solution
             best_solution_value = fit_value
-            while True:
+            t_end = time.time() + limit_seconds
+            while time.time() < t_end:
                 best_solution, best_solution_value, not_improved = search(best_solution, best_solution_value, distances)
                 if not_improved:
                     break

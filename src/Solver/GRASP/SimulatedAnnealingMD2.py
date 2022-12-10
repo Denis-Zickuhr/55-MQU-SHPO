@@ -1,0 +1,32 @@
+import argparse
+import sys
+import json
+sys.path.extend(json.load(open('.vscode/settings.json'))['python.analysis.extraPaths'])
+from loader import _LOAD
+from SimulatedAnnealing import localSearch
+from AlphaGreedyMinDMaxD import solve
+
+if __name__ == '__main__':
+   parser = argparse.ArgumentParser()
+   parser.add_argument('--ins', type=str)
+   parser.add_argument('--alpha', type=float)
+   parser.add_argument('--repeat', type=int)
+   parser.add_argument('--temperature', type=int)
+   parser.add_argument('--seconds', type=int)
+   args = parser.parse_args()
+
+def GRASP(ins, a, R, T, seconds):
+    r = 0
+    S = solve(a, _LOAD(ins))
+    S, S_Star = localSearch(ins, S, T, seconds)
+
+    while r < R:
+        NS = solve(a, _LOAD(ins))
+        NS, NS_Star = localSearch(ins, NS, T, seconds)
+        if NS_Star < S_Star:
+            S, S_Star = NS, NS_Star
+        r += 1
+    
+    return S_Star
+
+print(GRASP(args.ins, args.alpha, args.repeat, args.temperature, args.seconds))

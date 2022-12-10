@@ -7,7 +7,7 @@ from loader import _LOAD
 from solutioncalculation import *
 from operators import *
 
-def localSearch(ins, ts, tx, initial_construction):
+def localSearch(ins, initial_construction, limit_seconds):
         
     ins = ins
     solution  = initial_construction
@@ -68,7 +68,7 @@ def localSearch(ins, ts, tx, initial_construction):
             local_optima = [[] for i in range(optima_max)]
             optima_index = 0
             looseness = 0
-            t_end = time.time() + (ts * tx)
+            t_end = time.time() + limit_seconds
             while time.time() < t_end:
                 best_solution, best_solution_value, local_optima, optima_index, looseness = search(best_solution, (best_solution_value+looseness), distances, local_optima, optima_index, looseness)
             return best_solution, best_solution_value
