@@ -26,6 +26,6 @@ def GRASP(ins, a, R, seconds):
             S, S_Star = NS, NS_Star
         r += 1
     
-    return S, S_Star
+    return S_Star
 
 print(GRASP(args.ins, args.alpha, args.repeat, args.seconds))

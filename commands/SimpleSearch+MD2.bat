@@ -1,2 +1,3 @@
-pypy src\Solver\GRASP\SimpleSearch+MD2.py instances/A/A-n55-k9.vrp 0.07 5
-@REM interpreter grasp/path intance/path alpha repetitions
+@echo off
+
+pypy src\Solver\GRASP\SimpleSearchMD2.py --ins instances/A/A-n37-k5.vrp --alpha 0.2 --repeat 5 --seconds 5

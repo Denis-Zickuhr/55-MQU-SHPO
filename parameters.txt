@@ -1,0 +1,5 @@
+### Parameter file for the VRP
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GSS1", "GSS2", "GSA1", "GSA2", "GTS1", "GTS2")
+alpha           "--alpha "        r       (0.01, 1.00)
+temperature     "--temperature "  i       (50, 250)                            | algorithm %in% c("GSA1", "GSA2")
