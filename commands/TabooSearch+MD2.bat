@@ -1,3 +1,3 @@
 @echo off
 
-pypy src\Solver\GRASP\TabooSearchMD2.py --ins instances/A/A-n80-k10.vrp --seconds 20 --alpha 0.07 --repeat 2
+pypy src\Solver\GRASP\TabooSearchMD2.py --ins instances/A/A-n80-k10.vrp --seconds 20 --alpha 0.07 --repeat 2 --trace no --verbose no

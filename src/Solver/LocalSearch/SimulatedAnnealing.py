@@ -1,3 +1,4 @@
+import cmath
 import random
 import sys
 import time
@@ -32,23 +33,23 @@ def localSearch(ins, initial_construction, T, limit_seconds):
 
             new_solution_value = calcdistance_nominal(solution_n, distances)
 
-            if best_solution_value > new_solution_value:
+            delta = new_solution_value - best_solution_value
+
+            if delta < 0:
                 best_solution = solution_n
                 best_solution_value = new_solution_value
+                if fit_value > best_solution_value:
+                    fit_value = best_solution_value
+                    fit = best_solution
                 break
             else:
-                r = random.uniform(0, 1)
-                if r < ((best_solution_value - new_solution_value)/inner_temperature):
+                r = random.uniform(0.000, 1.000)
+                E = cmath.e**-delta/inner_temperature
+                if r < E:
                     best_solution = solution_n
-                    best_solution_value = new_solution_value
                     break
         
-        inner_temperature -= (fit_value/best_solution_value) * 0.5
-
-        if fit_value > best_solution_value:
-            fit_value = best_solution_value
-            fit = best_solution
-
+        inner_temperature -= 0.1
 
         return best_solution, best_solution_value, inner_temperature
 
@@ -65,7 +66,7 @@ def localSearch(ins, initial_construction, T, limit_seconds):
             best_solution_value = fit_value
             t_end = time.time() + limit_seconds
             inner_temperature = T
-            while T > 0 and time.time() < t_end:
+            while inner_temperature > 0 and time.time() < t_end:
                 best_solution, best_solution_value, inner_temperature = search(best_solution, best_solution_value, distances, inner_temperature)
             return best_solution, best_solution_value
         return startSearch()
