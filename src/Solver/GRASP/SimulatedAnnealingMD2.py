@@ -32,7 +32,7 @@ def GRASP(ins, a, R, T, seconds, isVerbose=False, isTrace=False):
         out_file = 'src/Solver/GRASP/out/annealingMD2-' + str(ins.replace("/", "-").replace(".vrp", "")) + '-r' + str(R) + '-' + str(rn) + '.csv'
         outf = open(out_file, "w", newline='')
         writer = csv.writer(outf)
-        writer.writerow([f"{r};{int(S_Star)}"])
+        writer.writerow([f"{r};{int(S_Star)};{int(S_Star)}"])
 
     while r < R:
         NS = solve(a, _LOAD(ins))
@@ -40,7 +40,7 @@ def GRASP(ins, a, R, T, seconds, isVerbose=False, isTrace=False):
         if NS_Star < S_Star:
             S, S_Star = NS, NS_Star
         if isTrace:
-            writer.writerow([f"{r+1};{int(S_Star)}"])
+            writer.writerow([f"{r+1};{int(S_Star)};{int(NS_Star)}"])
         r += 1
 
     if isTrace:

@@ -1,0 +1,45 @@
+### Parameter file for the VRP1
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GSS1")
+alpha           "--alpha "        r       (0.01, 1.00)
+
+------------------------------------------------------------------------------------------------------------------
+### Parameter file for the VRP2
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GSS2")
+alpha           "--alpha "        r       (0.01, 1.00)
+
+------------------------------------------------------------------------------------------------------------------
+### Parameter file for the VRP3
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GSA1")
+alpha           "--alpha "        r       (0.01, 1.00)
+temperature     "--temperature "  i       (50, 250)                            | algorithm %in% c("GSA1", "GSA2")
+
+------------------------------------------------------------------------------------------------------------------
+### Parameter file for the VRP4
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GSA2")
+alpha           "--alpha "        r       (0.01, 1.00)
+temperature     "--temperature "  i       (50, 250)                            | algorithm %in% c("GSA1", "GSA2")
+
+------------------------------------------------------------------------------------------------------------------
+### Parameter file for the VRP5
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GTS1")
+alpha           "--alpha "        r       (0.01, 1.00)
+
+------------------------------------------------------------------------------------------------------------------
+### Parameter file for the VRP6
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GTS2")
+alpha           "--alpha "        r       (0.01, 1.00)
+
+------------------------------------------------------------------------------------------------------------------
+### Parameter file for the VRP7
+# name		    switch           type    values                               [conditions (using R syntax)]
+algorithm       ""          c       ("GSS1", "GSS2", "GSA1", "GSA2", "GTS1", "GTS2")
+alpha           "--alpha "        r       (0.01, 1.00)
+temperature     "--temperature "  i       (50, 250)                            | algorithm %in% c("GSA1", "GSA2")
+
+------------------------------------------------------------------------------------------------------------------

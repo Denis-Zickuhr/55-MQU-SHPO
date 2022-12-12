@@ -13,7 +13,7 @@ alghorthim = ''.join(sys.argv[5])
 conf_params = ' '.join(sys.argv[6:])
 
 algDict = {
-    "GSS1": "src\Solver\GRASP\SimpleSearchMD1.py",
+    "GSS1": "./src\Solver\GRASP\SimpleSearchMD1.py",
     "GSS2": "src\Solver\GRASP\SimpleSearchMD2.py",
     "GSA1": "src\Solver\GRASP\SimulatedAnnealingMD1.py",
     "GSA2": "src\Solver\GRASP\SimulatedAnnealingMD2.py",
@@ -23,7 +23,7 @@ algDict = {
 
 # Create execution command
 fixed_params = ' --repeat 25 --seconds 10 '
-command = 'pypy ' + algDict[alghorthim] + ' --ins ' + instance + fixed_params + conf_params
+command = 'pypy "' + algDict[alghorthim] + '" --ins ' + instance + fixed_params + conf_params
 
 # Define the stdout and stderr files
 r = str(random.randint(1, 999999))
