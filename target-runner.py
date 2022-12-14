@@ -22,7 +22,7 @@ algDict = {
 }
 
 # Create execution command
-fixed_params = ' --repeat 25 --seconds 10 '
+fixed_params = ' --repeat 25 --seconds 15 '
 command = 'pypy "' + algDict[alghorthim] + '" --ins ' + instance + fixed_params + conf_params
 
 # Define the stdout and stderr files
