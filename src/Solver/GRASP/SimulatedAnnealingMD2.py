@@ -3,6 +3,7 @@ import random
 import sys
 import json
 import csv
+import time
 sys.path.extend(json.load(open('.vscode/settings.json'))['python.analysis.extraPaths'])
 from loader import _LOAD
 from SimulatedAnnealing import localSearch
@@ -20,10 +21,12 @@ if __name__ == '__main__':
    parser.add_argument('--seconds', type=int)
    parser.add_argument('--verbose', type=isBool)
    parser.add_argument('--trace',type=isBool)
+   parser.add_argument('--totaltime',type=int, default=3600)
    args = parser.parse_args()
 
-def GRASP(ins, a, R, T, seconds, isVerbose=False, isTrace=False):
+def GRASP(ins, a, R, T, seconds, isVerbose=False, isTrace=False, totaltime=3600):
 
+    t_end = time.time() + totaltime
     r = 0
     S = solve(a, _LOAD(ins))
     S, S_Star = localSearch(ins, S, T, seconds)
@@ -34,7 +37,7 @@ def GRASP(ins, a, R, T, seconds, isVerbose=False, isTrace=False):
         writer = csv.writer(outf)
         writer.writerow([f"{r};{int(S_Star)};{int(S_Star)}"])
 
-    while r < R:
+    while time.time() < t_end and r < R:
         NS = solve(a, _LOAD(ins))
         NS, NS_Star = localSearch(ins, NS, T, seconds)
         if NS_Star < S_Star:
@@ -51,4 +54,4 @@ def GRASP(ins, a, R, T, seconds, isVerbose=False, isTrace=False):
     else:
         return S_Star
 
-print(GRASP(args.ins, args.alpha, args.repeat, args.temperature, args.seconds, args.verbose, args.trace))
+print(GRASP(args.ins, args.alpha, args.repeat, args.temperature, args.seconds, args.verbose, args.trace, args.totaltime))
