@@ -1,19 +1,19 @@
 @echo off
 
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-@echo -----n33-k5
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-@echo -----n37-k5
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
-pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM @echo -----n33-k5
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n37-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM @echo -----n37-k5
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
+@REM pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n39-k5.vrp --alpha 0.29 --repeat 10000 --seconds 5 --trace yes --verbose no --totaltime 360
 @echo -----n39-k5
 pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n44-k6.vrp --alpha 0.29 --repeat 10000 --seconds 6 --trace yes --verbose no --totaltime 360
 pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n44-k6.vrp --alpha 0.29 --repeat 10000 --seconds 6 --trace yes --verbose no --totaltime 360
