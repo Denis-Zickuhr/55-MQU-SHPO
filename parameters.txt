@@ -1,5 +1,4 @@
-### Parameter file for the VRP4
+### Parameter file for the VRP5
 # name		    switch           type    values
-algorithm       ""          c       ("GSA2")
+algorithm       ""          c       ("GTS1")
 alpha           "--alpha "        r       (0.01, 1.00)
-temperature     "--temperature "  i       (50, 100)                        
