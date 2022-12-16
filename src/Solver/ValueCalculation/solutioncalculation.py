@@ -1,36 +1,30 @@
-import numpy
-
 def calcdistance_nominal(Solution, Points):
 
     S_Value = 0
 
     for i in range(len(Solution)):
         for j in range(len(Solution[i])-1):
-                n = round(Points[Solution[i][j]][Solution[i][j+1]], 0)
-                S_Value += n if not numpy.isnan(n) else 0
+                    n = Points[Solution[i][j]][Solution[i][j+1]]
+                    if n is not None:
+                        n = round(n, 0)
+                    S_Value += n if not n is None else 0
         
     return round(S_Value, 0)
 
-def calcdistance_array(Solution, Points):
-
-    S_Values = [0 for i in range(len(Solution))]
-
-    for i in range(len(Solution)):
-        for j in range(len(Solution[i])-1):
-                n = round(Points[Solution[i][j]][Solution[i][j+1]], 0)
-                S_Values[i] += round(n, 0) if not numpy.isnan(n) else 0
-        
-    return S_Values
-
-def calcdistance_one_k(Solution, Points):
+def calcdistance_partial(Solution, Points):
 
     S_Value = 0
 
-    for i in range(len(Solution)-1):
-        n = round(Points[Solution[i]][Solution[i+1]], 0)
-        S_Value += n if not numpy.isnan(n) else 0
+    for i in range(len(Solution)):
+        n = Points[Solution[i]][Solution[i+1]]
+        if n is not None:
+            n = round(n, 0)
+        S_Value += n if not n is None else 0
         
-    return S_Value
+    return round(S_Value, 0)
+
+def calcdistance_pair(Solution, Points):    
+    return round(Points[Solution[0]][Solution[1]], 0)
 
 def calcweigth(Solution, Demands, C):
 

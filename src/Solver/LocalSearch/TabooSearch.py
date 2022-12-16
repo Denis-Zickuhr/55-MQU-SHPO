@@ -1,3 +1,4 @@
+import random
 import sys
 import time
 import json
@@ -6,7 +7,7 @@ from loader import _LOAD
 from solutioncalculation import *
 from operators import *
 
-def localSearch(ins, ts, tx, initial_construction):
+def localSearch(ins, initial_construction, limit_seconds):
         
     ins = ins
     solution  = initial_construction
@@ -20,10 +21,14 @@ def localSearch(ins, ts, tx, initial_construction):
 
         best_solution = solution
         not_improved = True
+
+        weigth = calcweigth(solution, client_demand, vehicle_capacity)
         
-        solutions = relocate(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity))
-        solutions.extend(swap(solution, client_demand, calcweigth(solution, client_demand, vehicle_capacity)))
-        solutions.extend(route_robbing(best_solution, client_demand, calcweigth(best_solution, client_demand, vehicle_capacity)))
+        solutions = []
+        solutions.extend(relocate(solution, client_demand, weigth))
+        solutions.extend(swap(solution, client_demand, weigth))
+        solutions.extend(route_robbing(best_solution, client_demand, weigth))
+        solutions.extend(shuffle(solution))
         
         for solution_n in solutions:
 
@@ -63,11 +68,10 @@ def localSearch(ins, ts, tx, initial_construction):
             local_optima = [[] for i in range(optima_max)]
             optima_index = 0
             looseness = 0
-            t_end = time.time() + (ts * tx)
+            t_end = time.time() + limit_seconds
             while time.time() < t_end:
                 best_solution, best_solution_value, local_optima, optima_index, looseness = search(best_solution, (best_solution_value+looseness), distances, local_optima, optima_index, looseness)
             return best_solution, best_solution_value
         return startSearch()
 
     return init()
-    

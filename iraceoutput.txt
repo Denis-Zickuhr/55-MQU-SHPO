@@ -1,0 +1,477 @@
+Denis@DESKTOP-9KOIJJ9 MINGW64 /c/Projetos/VisualStudio/PyLab/55-MQU-SHPO (dev/1)
+$ #------------------------------------------------------------------------------
+# irace: An implementation in R of (Elitist) Iterated Racing
+# Version: 3.5.6863679
+# Copyright (C) 2010-2020
+# Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+# Jeremie Dubois-Lacoste  
+# Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+#
+# This is free software, and you are welcome to redistribute it under certain
+# conditions.  See the GNU General Public License for details. There is NO   
+# WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# irace builds upon previous code from the race package:
+#     race: Racing methods for the selection of the best
+#     Copyright (C) 2003 Mauro Birattari
+#------------------------------------------------------------------------------
+# installed at: C:/Users/Denis Zickuhr/AppData/Local/R/win-library/4.2/irace   
+# called with: 
+== irace == WARNING: A default scenario file "C:/Projetos/VisualStudio/PyLab/55-MQU-SHPO/scenario.txt" has been found and will be read.
+# 2022-12-10 22:32:29 -03: Initialization  
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 3
+# minNbSurvival: 3
+# nbParameters: 3
+# seed: 620048197
+# confidence level: 0.95
+# budget: 200
+# mu: 5
+# deterministic: FALSE
+
+# 2022-12-10 22:32:29 -03: Iteration 1 of 3
+# experimentsUsedSoFar: 0
+# remainingBudget: 200
+# currentBudget: 66
+# nbConfigurations: 11
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+$ |x|          1|         11|          7|     664.0000000|         11|00:23:11|   NA|  NA|    NA|
+|x|          2|         11|          7|     722.0000000|         22|00:22:58|+0.65|0.83|0.1321|
+|x|          3|         11|          7|     756.0000000|         33|00:22:53|+0.72|0.81|0.1257|
+|x|          4|         11|          7|     774.5000000|         44|00:23:24|+0.67|0.75|0.2290|
+|-|          5|          2|          7|     785.6000000|         55|00:23:19|+1.00|1.00|0.0000|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:           7    mean value:      785.6000000
+Description of the best-so-far configuration:
+  .ID. algorithm alpha temperature .PARENT.
+7    7      GTS1  0.69          NA       NA
+
+# 2022-12-11 00:28:18 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+7       GTS1  0.69          NA
+10      GSS1  0.69          NA
+# 2022-12-11 00:28:18 -03: Iteration 2 of 3
+# experimentsUsedSoFar: 55
+# remainingBudget: 145
+# currentBudget: 72
+# nbConfigurations: 11
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          6|         11|          7|     750.0000000|         11|00:39:32|   NA|  NA|    NA|
+|x|          5|         11|         17|     769.5000000|         20|00:35:02|+0.69|0.85|0.1107|
+|x|          4|         11|         17|     780.0000000|         29|00:35:03|+0.56|0.71|0.3772|
+|x|          1|         11|         13|     760.2500000|         38|00:34:58|+0.59|0.69|0.2807|
+|-|          2|          7|         13|     758.4000000|         47|00:34:59|+0.28|0.42|0.4553|
+|-|          3|          6|         13|     770.1666667|         52|00:21:43|-0.17|0.03|0.9707|
+|=|          7|          6|         19|     755.8571429|         58|00:26:04|-0.11|0.05|0.9169|
+|=|          8|          6|         19|     763.0000000|         64|00:26:05|-0.06|0.07|0.8806|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          19    mean value:      763.0000000
+Description of the best-so-far configuration:
+   .ID. algorithm alpha temperature .PARENT.
+19   19      GTS1  0.44          NA        7
+
+# 2022-12-11 04:41:49 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+19      GTS1  0.44          NA
+12      GTS1  0.57          NA
+17      GTS1  0.63          NA
+# 2022-12-11 04:41:49 -03: Iteration 3 of 3
+# experimentsUsedSoFar: 119
+# remainingBudget: 81
+# currentBudget: 81
+# nbConfigurations: 11
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          9|         11|         28|     661.0000000|         11|00:39:30|   NA|  NA|    NA|
+|x|          5|         11|         28|     735.5000000|         19|00:26:37|+0.53|0.76|0.1910|
+|x|          2|         11|         17|     735.3333333|         27|00:26:28|+0.66|0.77|0.2444|
+|x|          4|         11|         17|     751.7500000|         35|00:26:37|+0.64|0.73|0.3195|
+|-|          7|          7|         12|     739.6000000|         43|00:26:28|-0.09|0.13|0.9671|
+|=|          8|          7|         17|     745.6666667|         47|00:17:23|-0.03|0.14|0.8922|
+|=|          1|          7|         12|     738.5714286|         51|00:17:23|-0.06|0.09|0.9242|
+|=|          6|          7|         17|     739.2500000|         55|00:17:23|-0.04|0.09|0.8905|
+|=|          3|          7|         17|     749.4444444|         59|00:17:23|-0.08|0.04|0.9245|
+|=|         10|          7|         27|     756.2000000|         66|00:30:25|-0.09|0.02|0.9301|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          27    mean value:      756.2000000
+Description of the best-so-far configuration:
+   .ID. algorithm alpha temperature .PARENT.
+27   27      GTS1  0.29          NA       19
+
+# 2022-12-11 08:47:31 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+27      GTS1  0.29          NA
+17      GTS1  0.63          NA
+19      GTS1  0.44          NA
+# 2022-12-11 08:47:31 -03: Iteration 4 of 4
+# experimentsUsedSoFar: 185
+# remainingBudget: 15
+# currentBudget: 15
+# nbConfigurations: 4
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         11|          4|         27|     786.0000000|          4|00:13:19|   NA|  NA|    NA|
+|x|          4|          4|         27|     793.5000000|          5|00:00:15|+0.63|0.82|0.2064|
+|x|          5|          4|         27|     805.6666667|          6|00:00:16|+0.48|0.66|0.4840|
+|x|          8|          4|         17|     798.7500000|          7|00:00:10|+0.55|0.66|0.3414|
+|-|          1|          3|         27|     779.0000000|          8|00:00:12|-0.21|0.03|0.7707|
+|.|          6|          3|         27|     773.1666667|          8|00:00:00|-0.09|0.09|0.6763|
+|.|          2|          3|         27|     770.7142857|          8|00:00:00|-0.15|0.02|0.7481|
+|.|          7|          3|         27|     758.5000000|          8|00:00:00|-0.14|0.00|0.7592|
+|.|          9|          3|         27|     747.8888889|          8|00:00:00|-0.10|0.02|0.7298|
+|.|          3|          3|         27|     754.7000000|          8|00:00:00|-0.09|0.02|0.7292|
+|.|         10|          3|         27|     758.9090909|          8|00:00:00|-0.06|0.04|0.7096|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          27    mean value:      758.9090909
+Description of the best-so-far configuration:
+   .ID. algorithm alpha temperature .PARENT.
+27   27      GTS1  0.29          NA       19
+
+# 2022-12-11 09:01:45 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+27      GTS1  0.29          NA
+19      GTS1  0.44          NA
+17      GTS1  0.63          NA
+# 2022-12-11 09:01:45 -03: Stopped because there is not enough budget left to race more than the minimum (3)
+# You may either increase the budget or set 'minNbSurvival' to a lower value
+# Iteration: 5
+# nbIterations: 5
+# experimentsUsedSoFar: 193
+# timeUsed: 0
+# remainingBudget: 7
+# currentBudget: 7
+# number of elites: 3
+# nbConfigurations: 3
+# Total CPU user time: 0.98, CPU sys time: 0.95, Wall-clock time: 37756.24
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+27      GTS1  0.29          NA
+19      GTS1  0.44          NA
+17      GTS1  0.63          NA
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+27  GTS1 --alpha 0.29
+19  GTS1 --alpha 0.44
+17  GTS1 --alpha 0.63
+
+
+# Testing of elite configurations: 1
+# Testing iteration configurations: FALSE
+# 2022-12-11 09:01:45 -03: No test instances, skip testing
+
+$ #------------------------------------------------------------------------------
+# irace: An implementation in R of (Elitist) Iterated Racing
+# Version: 3.5.6863679
+# Copyright (C) 2010-2020
+# Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+# Jeremie Dubois-Lacoste
+# Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+#
+# This is free software, and you are welcome to redistribute it under certain    
+# conditions.  See the GNU General Public License for details. There is NO       
+# WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+#
+# irace builds upon previous code from the race package:
+#     race: Racing methods for the selection of the best
+#     Copyright (C) 2003 Mauro Birattari
+#------------------------------------------------------------------------------
+# installed at: C:/Users/Denis Zickuhr/AppData/Local/R/win-library/4.2/irace   
+# called with: --parallel 8
+== irace == WARNING: A default scenario file "C:/Projetos/VisualStudio/PyLab/55-MQU-SHPO/scenario.txt" has been found and will be read.
+# 2022-12-13 10:10:26 -03: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 2
+# minNbSurvival: 2
+# nbParameters: 1
+# seed: 1743528786
+# confidence level: 0.95
+# budget: 500
+# mu: 5
+# deterministic: FALSE
+
+# 2022-12-13 10:10:26 -03: Iteration 1 of 2
+# experimentsUsedSoFar: 0
+# remainingBudget: 500
+# currentBudget: 250
+# nbConfigurations: 41
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         41|         21|     1617.000000|         41|00:03:14|   NA|  NA|    NA|
+|x|          2|         41|         40|     1636.500000|         82|00:38:38|-0.00|0.50|1.0110|
+|x|          3|         41|         40|     1380.666667|        123|00:04:44|+0.04|0.36|0.9897|
+|x|          4|         41|         40|     1318.000000|        164|00:04:49|-0.05|0.21|1.0589|
+|=|          5|         41|         40|     1294.800000|        205|00:23:09|+0.04|0.23|0.9915|
+|=|          6|         41|         40|     1295.333333|        246|00:30:03|+0.02|0.18|0.9878|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          40    mean value:      1295.333333
+Description of the best-so-far configuration:
+   .ID. algorithm alpha .PARENT.
+40   40      GSS1   0.7       NA
+
+# 2022-12-13 11:55:06 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha
+4       GSS1  0.08
+35      GSS1  0.17
+# 2022-12-13 11:55:06 -03: Iteration 2 of 2
+# experimentsUsedSoFar: 246
+# remainingBudget: 254
+# currentBudget: 254
+# nbConfigurations: 38
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          7|         38|         46|     1831.000000|         38|00:29:24|   NA|  NA|    NA|
+|x|          3|         38|         50|     1355.000000|         74|00:03:50|-0.27|0.37|1.2473|
+|x|          2|         38|         66|     1473.333333|        110|00:37:44|-0.08|0.28|1.0842|
+|x|          4|         38|         45|     1411.000000|        146|00:04:11|-0.10|0.17|1.0798|
+|=|          1|         38|         66|     1443.400000|        182|00:03:38|-0.03|0.17|1.0121|
+|=|          6|         38|         66|     1415.833333|        218|00:26:23|-0.00|0.16|0.9772|
+|=|          5|         38|          4|     1395.714286|        254|00:19:52|+0.01|0.15|0.9710|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:           4    mean value:      1395.714286
+Description of the best-so-far configuration:
+  .ID. algorithm alpha .PARENT.
+4    4      GSS1  0.08       NA
+
+# 2022-12-13 14:00:13 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha
+4       GSS1  0.08
+35      GSS1  0.17
+# 2022-12-13 14:00:13 -03: Stopped because budget is exhausted
+# Iteration: 3
+# nbIterations: 2
+# experimentsUsedSoFar: 500
+# timeUsed: 0
+# remainingBudget: 0
+# currentBudget: 254
+# number of elites: 2
+# nbConfigurations: 38
+# Total CPU user time: 1.06, CPU sys time: 0.49, Wall-clock time: 13787.75
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha
+4       GSS1  0.08
+35      GSS1  0.17
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+4   GSS1 --alpha 0.08
+35  GSS1 --alpha 0.17
+
+
+# Testing of elite configurations: 1
+# Testing iteration configurations: FALSE
+# 2022-12-13 14:00:13 -03: No test instances, skip testing
+
+$ #------------------------------------------------------------------------------
+# irace: An implementation in R of (Elitist) Iterated Racing
+# Version: 3.5.6863679
+# Copyright (C) 2010-2020
+# Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+# Jeremie Dubois-Lacoste
+# Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+#
+# This is free software, and you are welcome to redistribute it under certain
+# conditions.  See the GNU General Public License for details. There is NO
+# WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# irace builds upon previous code from the race package:
+#     race: Racing methods for the selection of the best
+#     Copyright (C) 2003 Mauro Birattari
+#------------------------------------------------------------------------------
+# installed at: C:/Users/Denis Zickuhr/AppData/Local/R/win-library/4.2/irace
+# called with: --parallel 8
+== irace == WARNING: A default scenario file "C:/Projetos/VisualStudio/PyLab/55-MQU-SHPO/scenario.txt" has been foun
+# 2022-12-13 18:18:47 -03: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 3
+# minNbSurvival: 3
+# nbParameters: 2
+# seed: 1013375681
+# confidence level: 0.95
+# budget: 500
+# mu: 5
+# deterministic: FALSE
+
+# 2022-12-13 18:18:47 -03: Iteration 1 of 3
+# experimentsUsedSoFar: 0
+# remainingBudget: 500
+# currentBudget: 166
+# nbConfigurations: 27
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|          1|         27|         26|     787.0000000|         27|00:26:00|   NA|  NA|    NA|
+|x|          2|         27|         25|     1063.500000|         54|00:26:16|-0.18|0.41|0.9925|
+|x|          3|         27|         25|     1392.000000|         81|00:26:30|+0.04|0.36|0.7927|
+|x|          4|         27|         25|     1566.250000|        108|00:26:27|+0.09|0.32|0.7834|
+|=|          5|         27|         25|     1561.800000|        135|00:26:24|+0.08|0.27|0.8289|
+|-|          6|         14|         25|     1500.666667|        162|00:26:13|+0.01|0.18|0.9286|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          20    mean value:      1480.000000
+Description of the best-so-far configuration:
+   .ID. algorithm alpha temperature .PARENT.
+20   20      GSA1  0.37          69       NA
+
+# 2022-12-13 20:56:39 -03: Elite configurations (first number is the configuration ID; listed from best to worst acc
+   algorithm alpha temperature
+20      GSA1  0.37          69
+25      GSA1  0.62          94
+22      GSA1  0.77          68
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvare preserved.r|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+                                                                                           -+
+|x|          7|         26|         38|     1066.000000|         26|00:26:06|   NA|  NA|    Nr|A|                                                                                           -+
+|x|          5|         26|         48|     1273.500000|         49|00:26:13|-0.10|0.45|0.975A|5|0.9754|                                                                                    4|
+|x|          2|         26|         48|     1293.000000|         72|00:26:15|+0.06|0.38|0.8656|8|0.8656|                                                                                    7|
+|x|          6|         26|         48|     1267.000000|         95|00:26:14|+0.17|0.38|0.7777|
+$ |-|          3|         16|         25|     1444.200000|        118|00:26:32|+0.02|0.21|0.8714|
+|=|          1|         16|         47|     1310.000000|        131|00:13:07|+0.06|0.22|0.8467|
+|-|          4|         11|         47|     1436.857143|        144|00:13:17|+0.05|0.19|0.8560|
+|=|          8|         11|         20|     1349.500000|        155|00:13:05|+0.10|0.21|0.8090|
+$ |=|          9|         11|         25|     1486.111111|        166|00:13:16|+0.09|0.19|0.8250|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+  
+Best-so-far configuration:          25    mean value:      1486.111111
+Description of the best-so-far configuration:
+   .ID. algorithm alpha temperature .PARENT.
+25   25      GSA1  0.62          94       NA
+
+# 2022-12-14 00:00:50 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+25      GSA1  0.62          94
+20      GSA1  0.37          69
+50      GSA1  0.28          78
+# 2022-12-14 00:00:50 -03: Iteration 3 of 3
+# experimentsUsedSoFar: 328
+# remainingBudget: 172
+# currentBudget: 172
+# nbConfigurations: 19
+# Markers:
+     x No test is performed.
+     c Configurations are discarded only due to capping.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+     . All alive configurations are elite and nothing is discarded
+
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|       Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+|x|         10|         19|         66|     833.0000000|         19|00:25:48|   NA|  NA|    NA|
+|x|          6|         19|         58|     1021.000000|         35|00:13:08|+0.13|0.57|0.7771|
+|x|          3|         19|         50|     1270.000000|         51|00:13:18|+0.11|0.40|0.7761|
+|x|          5|         19|         20|     1406.250000|         67|00:13:13|+0.04|0.28|0.8844|
+|=|          4|         19|         20|     1541.400000|         83|00:13:14|+0.07|0.25|0.8860|
+|=|          8|         19|         20|     1412.500000|         99|00:13:06|+0.03|0.19|0.9178|
+|=|          9|         19|         50|     1487.142857|        115|00:13:15|-0.02|0.13|0.9302|
+|=|          7|         19|         50|     1436.250000|        131|00:13:06|+0.00|0.13|0.9133|
+|=|          2|         19|         50|     1409.888889|        147|00:13:11|+0.02|0.13|0.8867|
+|=|          1|         19|         50|     1352.400000|        163|00:13:05|+0.04|0.13|0.8782|
++-+-----------+-----------+-----------+----------------+-----------+--------+-----+----+------+
+Best-so-far configuration:          50    mean value:      1352.400000
+Description of the best-so-far configuration:
+   .ID. algorithm alpha temperature .PARENT.
+50   50      GSA1  0.28          78       20
+
+# 2022-12-14 02:25:19 -03: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+50      GSA1  0.28          78
+20      GSA1  0.37          69
+25      GSA1  0.62          94
+# 2022-12-14 02:25:19 -03: Stopped because there is not enough budget left to race more than the minimum (3)
+# You may either increase the budget or set 'minNbSurvival' to a lower value
+# Iteration: 4
+# nbIterations: 4
+# experimentsUsedSoFar: 491
+# timeUsed: 0
+# remainingBudget: 9
+# currentBudget: 9
+# number of elites: 3
+# nbConfigurations: 3
+# Total CPU user time: 1.42, CPU sys time: 0.8, Wall-clock time: 29193.7
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm alpha temperature
+50      GSA1  0.28          78
+20      GSA1  0.37          69
+25      GSA1  0.62          94
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+50  GSA1 --alpha 0.28 --temperature 78
+20  GSA1 --alpha 0.37 --temperature 69
+25  GSA1 --alpha 0.62 --temperature 94
+
+
+# Testing of elite configurations: 1
+# Testing iteration configurations: FALSE 
+# 2022-12-14 02:25:19 -03: No test instances, skip testing

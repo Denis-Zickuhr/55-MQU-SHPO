@@ -1,0 +1,4 @@
+### Parameter file for the VRP5
+# name		    switch           type    values
+algorithm       ""          c       ("GTS1")
+alpha           "--alpha "        r       (0.01, 1.00)

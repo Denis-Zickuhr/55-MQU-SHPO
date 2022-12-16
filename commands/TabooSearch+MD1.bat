@@ -1,1 +1,3 @@
-python "src\Solver\GRASP\TabooSearch+MD1.py" instances/A/A-n55-k9.vrp 20 1 0.07 5
+@echo off
+
+pypy src\Solver\GRASP\TabooSearchMD1.py --ins instances/A/A-n33-k5.vrp --alpha 0.29 --repeat 100 --seconds 5 --trace yes --verbose no --totaltime 360

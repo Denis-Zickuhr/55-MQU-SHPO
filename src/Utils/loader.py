@@ -1,4 +1,6 @@
-import numpy
+from cmath import sqrt
+
+
 
 def _LOAD(path):
     file = open(path, "r")
@@ -66,15 +68,15 @@ def _LOAD(path):
         if line.startswith("DEPOT_SECTION"):
             avail = True
 
-    distances = numpy.array([[None for i in range(clients)] for i in range(clients)], dtype=numpy.float64)
+    distances = [[None for i in range(clients)] for i in range(clients)]
     for i in range(clients):
         p1 = Pa[i]
         for j in range(clients):
             p2 = Pa[j]
-            Delta = numpy.sqrt(((numpy.power((p2[0] - p1[0]), 2)) + (numpy.power((p2[1] - p1[1]), 2))))
+            Delta = (((p2[0] - p1[0])**2) + ((p2[1] - p1[1])**2))**(1/2)
             if Delta == 0.0:
                 distances[i][j] = None
             else:
                 distances[i][j] = Delta
-            
+        
     return vehicles, clients, vehicle_capacity, distances, clients_demands 

@@ -1,1 +1,3 @@
-python "src\Solver\GRASP\SimpleSearch+MD2.py" instances/A/A-n55-k9.vrp 20 1 0.07 5
+@echo off
+
+pypy src\Solver\GRASP\SimpleSearchMD2.py --ins instances/A/A-n33-k5.vrp --alpha 0.24 --repeat 100 --seconds 20 --trace yes --verbose no --totaltime 300
